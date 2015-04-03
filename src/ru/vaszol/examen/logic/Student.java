@@ -3,31 +3,35 @@ package ru.vaszol.examen.logic;
 /**
  * Created by vas on 03.04.2015.
  */
-import java.text.Collator;
 import java.text.DateFormat;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.Collator;
 import java.util.Date;
 import java.util.Locale;
 
 public class Student implements Comparable {
 
-    // поле ИД СТУДЕНТА
     private int studentId;
-    // поле ИМЯ
     private String firstName;
-    // поле ФАМИЛИЯ
     private String surName;
-    // поле ОТЧЕСТВО
     private String patronymic;
-    // поле ДАТА РОЖДЕНИЯ
     private Date dateOfBirth;
-    // поле ПОЛ
     private char sex;
-    // поле ИД ГРУППЫ
     private int groupId;
-    // поле ГОД ОБУЧЕНИЯ
     private int educationYear;
 
-    // get/set для ДАТА РОЖДЕНИЯ
+    public Student(ResultSet rs) throws SQLException {
+        setStudentId(rs.getInt(1));
+        setFirstName(rs.getString(2));
+        setPatronymic(rs.getString(3));
+        setSurName(rs.getString(4));
+        setSex(rs.getString(5).charAt(0));
+        setDateOfBirth(rs.getDate(6));
+        setGroupId(rs.getInt(7));
+        setEducationYear(rs.getInt(8));
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -36,7 +40,6 @@ public class Student implements Comparable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    // get/set для ГОД ОБУЧЕНИЯ
     public int getEducationYear() {
         return educationYear;
     }
@@ -45,7 +48,6 @@ public class Student implements Comparable {
         this.educationYear = educationYear;
     }
 
-    // get/set для ИД ГРУППЫ
     public int getGroupId() {
         return groupId;
     }
@@ -54,7 +56,6 @@ public class Student implements Comparable {
         this.groupId = groupId;
     }
 
-    // get/set для ИД СТУДЕНТА
     public int getStudentId() {
         return studentId;
     }
@@ -63,7 +64,6 @@ public class Student implements Comparable {
         this.studentId = studentId;
     }
 
-    // get/set для ИМЯ
     public String getFirstName() {
         return firstName;
     }
@@ -72,7 +72,6 @@ public class Student implements Comparable {
         this.firstName = firstName;
     }
 
-    // get/set для ОТЧЕСТВО
     public String getPatronymic() {
         return patronymic;
     }
@@ -81,7 +80,6 @@ public class Student implements Comparable {
         this.patronymic = patronymic;
     }
 
-    // get/set для ФАМИЛИЯ
     public String getSurName() {
         return surName;
     }
@@ -90,7 +88,6 @@ public class Student implements Comparable {
         this.surName = surName;
     }
 
-    // get/set для ПОЛ
     public char getSex() {
         return sex;
     }
@@ -99,9 +96,6 @@ public class Student implements Comparable {
         this.sex = sex;
     }
 
-    // DateFormat - класс для преобразования даты
-    // в строку в определеннном формате.
-    // Подробнее смотрите документацию по этому методу
     public String toString() {
         return surName + " " + firstName + " " + patronymic + ", "
                 + DateFormat.getDateInstance(DateFormat.SHORT).format(dateOfBirth)

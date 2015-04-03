@@ -5,16 +5,11 @@ package ru.vaszol.examen.logic;
  */
 public class Group {
 
-    // поле ИД ГРУППЫ
     private int groupId;
-    // поле ИМЯ ГРУППЫ
     private String nameGroup;
-    // поле КУРАТОР
     private String curator;
-    // поле СПЕЦИАЛЬНОСТЬ
     private String speciality;
 
-    // get/set для КУРАТОР
     public String getCurator() {
         return curator;
     }
@@ -23,7 +18,6 @@ public class Group {
         this.curator = curator;
     }
 
-    // get/set для ИД ГРУППЫ
     public int getGroupId() {
         return groupId;
     }
@@ -32,7 +26,6 @@ public class Group {
         this.groupId = groupId;
     }
 
-    // get/set для ИМЯ ГРУППЫ
     public String getNameGroup() {
         return nameGroup;
     }
@@ -41,7 +34,6 @@ public class Group {
         this.nameGroup = nameGroup;
     }
 
-    // get/set для СПЕЦИАЛЬНОСТЬ
     public String getSpeciality() {
         return speciality;
     }
