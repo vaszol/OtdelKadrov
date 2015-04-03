@@ -1,4 +1,4 @@
-package ru.vaszol.examen;
+package ru.vaszol.examen.logic;
 
 /**
  * Created by vas on 03.04.2015.
@@ -36,7 +36,8 @@ public class ManagementSystem {
         return instance;
     }
 
-    // Метод, который вызывается при запуске класса
+    // Метод, который вызывается при запуске класса (отключен)
+    /**
     public static void main(String[] args) {
         // Этот код позволяет нам перенаправить стандартный вывод в файл
         // Т.к. на экран выводится не совсем удобочитаемая кодировка,
@@ -167,7 +168,7 @@ public class ManagementSystem {
         }
         printString();
     }
-
+*/
     // Метод создает две группы и помещает их в коллекцию для групп
     public void loadGroups() {
         // Проверяем - может быть наш список еще не создан вообще

@@ -1,4 +1,4 @@
-package ru.vaszol.examen;
+package ru.vaszol.examen.logic;
 
 /**
  * Created by vas on 03.04.2015.
