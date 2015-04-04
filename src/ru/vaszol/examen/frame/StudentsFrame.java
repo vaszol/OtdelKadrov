@@ -198,7 +198,7 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
     }
 
     // метод для обновления списка студентов для определенной группы
-    private void reloadStudents() {
+    public void reloadStudents() {
         // Создаем анонимный класс для потока
         Thread t = new Thread() {
             // Переопределяем в нем метод run
@@ -294,12 +294,65 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
 
     // метод для добавления студента
     private void insertStudent() {
-        JOptionPane.showMessageDialog(this, "insertStudent");
+        Thread t = new Thread() {
+
+            public void run() {
+                try {
+                    // Добавляем нового студента - поэтому true
+                    // Также заметим, что необходимо указать не просто this, а StudentsFrame.this
+                    // Иначе класс не будет воспринят - он же другой - анонимный
+                    StudentDialog sd = new StudentDialog(ms.getGroups(), true, StudentsFrame.this);
+                    sd.setModal(true);
+                    sd.setVisible(true);
+                    if (sd.getResult()) {
+                        Student s = sd.getStudent();
+                        ms.insertStudent(s);
+                        reloadStudents();
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+                }
+            }
+        };
+        t.start();
     }
 
     // метод для редактирования студента
     private void updateStudent() {
-        JOptionPane.showMessageDialog(this, "updateStudent");
+        Thread t = new Thread() {
+
+            public void run() {
+                if (stdList != null) {
+                    StudentTableModel stm = (StudentTableModel) stdList.getModel();
+                    // Проверяем - выделен ли хоть какой-нибудь студент
+                    if (stdList.getSelectedRow() >= 0) {
+                        // Вот где нам пригодился метод getStudent(int rowIndex)
+                        Student s = stm.getStudent(stdList.getSelectedRow());
+                        try {
+                            // Исправляем данные на студента - поэтому false
+                            // Также заметим, что необходимо указать не просто this, а StudentsFrame.this
+                            // Иначе класс не будет воспринят - он же другой - анонимный
+                            StudentDialog sd = new StudentDialog(ms.getGroups(), false, StudentsFrame.this);
+                            sd.setStudent(s);
+                            sd.setModal(true);
+                            sd.setVisible(true);
+                            if (sd.getResult()) {
+                                Student us = sd.getStudent();
+                                ms.updateStudent(us);
+                                reloadStudents();
+                            }
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+                        }
+                    } // Если студент не выделен - сообщаем пользователю, что это необходимо
+                    else {
+                        JOptionPane.showMessageDialog(StudentsFrame.this,
+                                "Необходимо выделить студента в списке");
+                    }
+                }
+            }
+        };
+        t.start();
     }
 
     // метод для удаления студента
