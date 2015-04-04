@@ -1,7 +1,8 @@
-package ru.vaszol.examen;
+package ru.vaszol.examen.test;
 
 /**
  * Created by vas on 03.04.2015.
+ * СЃРѕР·РґР°РµРј РїСЂРѕСЃС‚РѕРµ РѕРєРЅРѕ
  */
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -11,9 +12,9 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         setBounds(100, 100, 300, 200);
     }
-/**
+
     public static void main(String[] args) {
-        // Запуск формы лучше производить в специальном треде
+        // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         // event-dispatching thread - EDT
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -22,5 +23,5 @@ public class MainFrame extends JFrame {
                 mf.setVisible(true);
             }
         });
-    }*/
+    }
 }

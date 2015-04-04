@@ -1,7 +1,10 @@
-package ru.vaszol.examen.jdbc;
+package ru.vaszol.examen.test;
 
 /**
  * Created by vas on 03.04.15.
+ * обращаемся к БД MySQL и читаем записи в таблице,
+ * которые записываем в файл out.txt
+ *
  */
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

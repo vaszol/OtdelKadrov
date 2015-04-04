@@ -1,7 +1,8 @@
-package ru.vaszol.examen.logic;
+package ru.vaszol.examen.test;
 
 /**
  * Created by vas on 03.04.2015.
+ * проводим сравнение по алфавиту
  */
 import java.text.Collator;
 import java.util.Locale;

@@ -6,6 +6,6 @@
     <file url="file://$PROJECT_DIR$/src/ru/vaszol/examen/logic/Group.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/ru/vaszol/examen/logic/ManagementSystem.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/ru/vaszol/examen/logic/Student.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/ru/vaszol/examen/logic/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/ru/vaszol/examen/test/Test.java" charset="UTF-8" />
   </component>
 </project>
