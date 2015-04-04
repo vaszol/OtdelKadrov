@@ -238,7 +238,30 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
 
     // метод для очистки группы
     private void clearGroup() {
-        JOptionPane.showMessageDialog(this, "clearGroup");
+        Thread t = new Thread() {
+            public void run() {
+                // Проверяем - выделена ли группа
+                if (grpList.getSelectedValue() != null) {
+                    if (JOptionPane.showConfirmDialog(StudentsFrame.this,
+                            "Вы хотите удалить студентов из группы?", "Удаление студентов",
+                            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                        // Получаем выделенную группу
+                        Group g = (Group) grpList.getSelectedValue();
+                        // Получаем число из спинера
+                        int y = ((SpinnerNumberModel) spYear.getModel()).getNumber().intValue();
+                        try {
+                            // Удалили студентов из группы
+                            ms.removeStudentsFromGroup(g, y);
+                            // перегрузили список студентов
+                            reloadStudents();
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+                        }
+                    }
+                }
+            }
+        };
+        t.start();
     }
 
     // метод для добавления студента
@@ -253,7 +276,32 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
 
     // метод для удаления студента
     private void deleteStudent() {
-        JOptionPane.showMessageDialog(this, "deleteStudent");
+        Thread t = new Thread() {
+            public void run() {
+                if (stdList != null) {
+                    StudentTableModel stm = (StudentTableModel) stdList.getModel();
+                    // Проверяем - выделен ли хоть какой-нибудь студент
+                    if (stdList.getSelectedRow() >= 0) {
+                        if (JOptionPane.showConfirmDialog(StudentsFrame.this,
+                                "Вы хотите удалить студента?", "Удаление студента",
+                                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            // Вот где нам пригодился метод getStudent(int rowIndex)
+                            Student s = stm.getStudent(stdList.getSelectedRow());
+                            try {
+                                ms.deleteStudent(s);
+                                reloadStudents();
+                            } catch (SQLException e) {
+                                JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+                            }
+                        }
+                    } // Если студент не выделен - сообщаем пользователю, что это необходимо
+                    else {
+                        JOptionPane.showMessageDialog(StudentsFrame.this, "Необходимо выделить студента в списке");
+                    }
+                }
+            }
+        };
+        t.start();
     }
 
     // метод для показа всех студентов
