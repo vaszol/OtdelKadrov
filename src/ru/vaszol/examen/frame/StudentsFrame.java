@@ -199,25 +199,36 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
 
     // метод для обновления списка студентов для определенной группы
     private void reloadStudents() {
-        if (stdList != null) {
-            // Получаем выделенную группу
-            Group g = (Group) grpList.getSelectedValue();
-            // Получаем число из спинера
-            int y = ((SpinnerNumberModel) spYear.getModel()).getNumber().intValue();
-            try {
-                // Получаем список студентов
-                Collection<Student> s = ms.getStudentsFromGroup(g, y);
-                // И устанавливаем модель для таблицы с новыми данными
-                stdList.setModel(new StudentTableModel(new Vector<Student>(s)));
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+        // Создаем анонимный класс для потока
+        Thread t = new Thread() {
+            // Переопределяем в нем метод run
+            public void run() {
+                if (stdList != null) {
+                    // Получаем выделенную группу
+                    Group g = (Group) grpList.getSelectedValue();
+                    // Получаем число из спинера
+                    int y = ((SpinnerNumberModel) spYear.getModel()).getNumber().intValue();
+                    try {
+                        // Получаем список студентов
+                        Collection<Student> s = ms.getStudentsFromGroup(g, y);
+                        // И устанавливаем модель для таблицы с новыми данными
+                        stdList.setModel(new StudentTableModel(new Vector<Student>(s)));
+                    } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+                    }
+                }
+                // Вводим искусственную задержку на 3 секунды
+                try {
+                    Thread.sleep(3000);
+                } catch (Exception e) {
+                }
             }
-        }
-        // Вводим искусственную задержку на 3 секунды
-        try {
-            Thread.sleep(3000);
-        } catch (Exception e) {
-        }
+            // Окончание нашего метода run
+        };
+        // Окончание определения анонимного класса
+
+        // И теперь мы запускаем наш поток
+        t.start();
     }
 
     // метод для переноса группы
