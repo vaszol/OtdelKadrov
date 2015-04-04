@@ -233,7 +233,35 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
 
     // метод для переноса группы
     private void moveGroup() {
-        JOptionPane.showMessageDialog(this, "moveGroup");
+        Thread t = new Thread() {
+            public void run() {
+                // Если группа не выделена - выходим. Хотя это крайне маловероятно
+                if (grpList.getSelectedValue() == null) {
+                    return;
+                }
+                try {
+                    // Получаем выделенную группу
+                    Group g = (Group) grpList.getSelectedValue();
+                    // Получаем число из спинера
+                    int y = ((SpinnerNumberModel) spYear.getModel()).getNumber().intValue();
+                    // Создаем наш диалог
+                    GroupDialog gd = new GroupDialog(y, ms.getGroups());
+                    // Задаем ему режим модальности - нельзя ничего кроме него выделить
+                    gd.setModal(true);
+                    // Показываем диалог
+                    gd.setVisible(true);
+                    // Если нажали кнопку OK - перемещаем в новую группу с новым годом
+                    // и перегружаем список студентов
+                    if (gd.getResult()) {
+                        ms.moveStudentsToGroup(g, y, gd.getGroup(), gd.getYear());
+                        reloadStudents();
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+                }
+            }
+        };
+        t.start();
     }
 
     // метод для очистки группы
