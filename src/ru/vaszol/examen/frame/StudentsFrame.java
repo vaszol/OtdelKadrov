@@ -6,6 +6,8 @@ package ru.vaszol.examen.frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -197,7 +199,25 @@ public class StudentsFrame extends JFrame implements ActionListener, ListSelecti
 
     // метод для обновления списка студентов для определенной группы
     private void reloadStudents() {
-        JOptionPane.showMessageDialog(this, "reloadStudents");
+        if (stdList != null) {
+            // Получаем выделенную группу
+            Group g = (Group) grpList.getSelectedValue();
+            // Получаем число из спинера
+            int y = ((SpinnerNumberModel) spYear.getModel()).getNumber().intValue();
+            try {
+                // Получаем список студентов
+                Collection<Student> s = ms.getStudentsFromGroup(g, y);
+                // И устанавливаем модель для таблицы с новыми данными
+                stdList.setModel(new StudentTableModel(new Vector<Student>(s)));
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(StudentsFrame.this, e.getMessage());
+            }
+        }
+        // Вводим искусственную задержку на 3 секунды
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e) {
+        }
     }
 
     // метод для переноса группы
