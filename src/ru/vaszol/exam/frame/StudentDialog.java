@@ -1,4 +1,4 @@
-package ru.vaszol.examen.frame;
+package ru.vaszol.exam.frame;
 
 /**
  * Created by vas on 04.04.15.
@@ -27,9 +27,9 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 
-import ru.vaszol.examen.logic.Group;
-import ru.vaszol.examen.logic.ManagementSystem;
-import ru.vaszol.examen.logic.Student;
+import ru.vaszol.exam.logic.Group;
+import ru.vaszol.exam.logic.ManagementSystem;
+import ru.vaszol.exam.logic.Student;
 
 public class StudentDialog extends JDialog implements ActionListener {
 

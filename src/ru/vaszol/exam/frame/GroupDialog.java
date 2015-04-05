@@ -1,4 +1,4 @@
-package ru.vaszol.examen.frame;
+package ru.vaszol.exam.frame;
 
 /**
  * Created by vas on 04.04.15.
@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-import ru.vaszol.examen.logic.Group;
+import ru.vaszol.exam.logic.Group;
 
 public class GroupDialog extends JDialog implements ActionListener {
 

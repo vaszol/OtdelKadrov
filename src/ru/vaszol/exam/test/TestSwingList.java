@@ -1,4 +1,4 @@
-package ru.vaszol.examen.test; /**
+package ru.vaszol.exam.test; /**
  * Created by vas on 04.04.15.
  * выводим окно со списком и двумя кнопками,
  * которые позволяют добавлять и удалять строки

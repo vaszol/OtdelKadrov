@@ -1,4 +1,4 @@
-package ru.vaszol.examen.test;
+package ru.vaszol.exam.test;
 
 /**
  * Created by vas on 03.04.2015.

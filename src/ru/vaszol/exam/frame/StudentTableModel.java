@@ -1,4 +1,4 @@
-package ru.vaszol.examen.frame;
+package ru.vaszol.exam.frame;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -8,9 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import java.text.DateFormat;
 import java.util.Vector;
 
-import javax.swing.table.AbstractTableModel;
-
-import ru.vaszol.examen.logic.Student;
+import ru.vaszol.exam.logic.Student;
 
 public class StudentTableModel extends AbstractTableModel {
     // Сделаем хранилище для нашего списка студентов

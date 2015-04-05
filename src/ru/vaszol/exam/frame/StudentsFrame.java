@@ -1,4 +1,4 @@
-package ru.vaszol.examen.frame;
+package ru.vaszol.exam.frame;
 
 /**
  * Created by vas on 03.04.2015.
@@ -18,9 +18,9 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import ru.vaszol.examen.logic.Group;
-import ru.vaszol.examen.logic.ManagementSystem;
-import ru.vaszol.examen.logic.Student;
+import ru.vaszol.exam.logic.Group;
+import ru.vaszol.exam.logic.ManagementSystem;
+import ru.vaszol.exam.logic.Student;
 
 public class StudentsFrame extends JFrame implements ActionListener, ListSelectionListener, ChangeListener {
     // Введем сразу имена для кнопок - потом будем их использовать в обработчиках
