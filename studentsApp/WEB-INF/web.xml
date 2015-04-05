@@ -3,6 +3,11 @@
 
 <web-app>
 
+    <display-name>Welcome to Students personnel</display-name>
+    <description>
+        Welcome to Students personnel
+    </description>
+
     <servlet>
         <servlet-name>hello</servlet-name>
         <servlet-class>ru.vaszol.exam.web.HelloWorldServlet</servlet-class>
@@ -12,5 +17,14 @@
         <servlet-name>hello</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <taglib>
+        <taglib-uri>
+            http://www.someurl.ru
+        </taglib-uri>
+        <taglib-location>
+            /WEB-INF/hello.tld
+        </taglib-location>
+    </taglib>
 
 </web-app>
