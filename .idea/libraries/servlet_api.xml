@@ -2,6 +2,7 @@
   <library name="servlet-api">
     <CLASSES>
       <root url="jar://$USER_HOME$/apache-tomcat-8.0.3/lib/servlet-api.jar!/" />
+      <root url="jar://C:/xampp/tomcat/lib/servlet-api.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
