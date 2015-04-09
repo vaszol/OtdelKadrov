@@ -5,9 +5,25 @@
                  "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>Students personnel</display-name>
     <servlet>
+        <servlet-name>MainFrameServlet</servlet-name>
+        <servlet-class>ru.vaszol.exam.web.MainFrameServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentFrameServlet</servlet-name>
+        <servlet-class>ru.vaszol.exam.web.StudentFrameServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>SimpleList</servlet-name>
         <servlet-class>ru.vaszol.exam.web.SimpleList</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>MainFrameServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentFrameServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SimpleList</servlet-name>
         <url-pattern>/simple</url-pattern>

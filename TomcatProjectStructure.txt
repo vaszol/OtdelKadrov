@@ -1,0 +1,17 @@
+META-INF
+    -context.xml
+WEB-INF
+    classes
+        students
+            logic
+                -Group.class
+                -ManagementSystem.class
+                -Student.class
+            web
+                forms
+                    -MainFrameForm.class
+                    - StudentForm.class
+                -MainFrameServlet.class
+                -StudentFrameServlet.class
+-MainFrame.jsp
+-StudentFrame.jsp
